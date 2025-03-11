@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Clicker</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: #f8f9fa;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+        }
+        .flower {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-size: cover;
+            animation: bloom 1s ease-out forwards;
+        }
+        @keyframes bloom {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener("click", function(event) {
+            let flower = document.createElement("div");
+            flower.className = "flower";
+            flower.style.left = event.clientX - 25 + "px";
+            flower.style.top = event.clientY - 25 + "px";
+            flower.style.backgroundImage = `url('https://www.pngall.com/wp-content/uploads/2016/06/Flower-PNG-HD.png')`;
+            document.body.appendChild(flower);
+            setTimeout(() => flower.remove(), 3000);
+        });
+    </script>
+</body>
+</html>
