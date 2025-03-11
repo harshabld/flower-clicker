@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flower Clicker</title>
+    <title>Flower Clicker - Is this Anj?</title>
     <style>
         body {
             margin: 0;
@@ -18,11 +18,11 @@
         }
         .flower {
             position: absolute;
-            width: 500px;
-            height: 500px;
+            width: 40px; /* Adjust size if needed */
+            height: 40px;
             background-size: contain;
             background-repeat: no-repeat;
-            animation: bloom 5s ease-out forwards;
+            animation: bloom 1s ease-out forwards;
         }
         @keyframes bloom {
             from { transform: scale(0); opacity: 0; }
@@ -32,14 +32,32 @@
 </head>
 <body>
     <script>
+        const textMap = [
+            "  *     **   *****   **   **",
+            " * *    * *   *   *  * * * *",
+            "*   *   **    *   *  *  *  *",
+            "*****   * *   *****  *     *",
+            "*   *   *  *  *   *  *     *",
+            "*   *   *   * *   *  *     *"
+        ]; // Letter pattern for "Is this Anj?"
+
         document.addEventListener("click", function(event) {
-            let flower = document.createElement("div");
-            flower.className = "flower";
-            flower.style.left = event.clientX - 25 + "px";
-            flower.style.top = event.clientY - 25 + "px";
-            flower.style.backgroundImage = `url('flower.png')`; // Uses uploaded image from GitHub
-            document.body.appendChild(flower);
-            setTimeout(() => flower.remove(), 3000);
+            const startX = event.clientX - 120; // Adjust position
+            const startY = event.clientY - 60;
+
+            textMap.forEach((row, rowIndex) => {
+                row.split("").forEach((char, colIndex) => {
+                    if (char === "*") {
+                        let flower = document.createElement("div");
+                        flower.className = "flower";
+                        flower.style.left = startX + colIndex * 30 + "px";
+                        flower.style.top = startY + rowIndex * 30 + "px";
+                        flower.style.backgroundImage = `url('flower.png')`; // Ensure the flower image is in the repo
+                        document.body.appendChild(flower);
+                        setTimeout(() => flower.remove(), 4000); // Flowers disappear after 4 seconds
+                    }
+                });
+            });
         });
     </script>
 </body>
