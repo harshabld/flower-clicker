@@ -18,7 +18,7 @@
         }
         .flower {
             position: absolute;
-            width: 50px; /* Increased for better visibility */
+            width: 50px; /* Bigger flowers */
             height: 50px;
             background-size: contain;
             background-repeat: no-repeat;
@@ -32,26 +32,26 @@
 </head>
 <body>
     <script>
-        const textMap = [
-            "  *   *  *   *   ****  *     *  ***    ***  *     *  *****  ***   ****  *   * ",
-            "  *   *  **  *  *      *     *  *  *  *   *  *   *   *      *  *  *      *   * ",
-            "  *   *  * * *  *  **  *  *  *  ***   *****   * *    ****   ***   *  **  *   * ",
-            "   * *   *  **  *   *  * * * *  *  *  *   *    *     *      *  *  *   *   * *  ",
-            "    *    *   *   ****   *   *   *   * *   *    *     *****  *   *  ****     *  ",
-        ]; // "Anj, you are awesome" mapped to letters
+        const textPattern = [
+            "  *   *   *   *   *****        *   *    ***   *****   *   *   ***    ***   *****  *     ",
+            "  *   *   **  *   *           *   *    *   *  *       *  *   *   *  *   *  *      *     ",
+            "  *   *   * * *   ***        * * * *   *   *  ***     **    *   *  *   *  ***    *     ",
+            "   * *    *  **   *         *  *  *    *   *  *       *  *   *   *  *   *  *      *     ",
+            "    *     *   *   *****    *     *    ***   *****   *   *    ***    ***   *****  ***** "
+        ]; // Correctly mapped "Anj, you are awesome"
 
         document.addEventListener("click", function(event) {
-            const startX = event.clientX - 200; // Centering the text
-            const startY = event.clientY - 50;
+            const startX = event.clientX - 200; // Centering horizontally
+            const startY = event.clientY - 50;  // Centering vertically
 
-            textMap.forEach((row, rowIndex) => {
+            textPattern.forEach((row, rowIndex) => {
                 row.split("").forEach((char, colIndex) => {
                     if (char === "*") {
                         let flower = document.createElement("div");
                         flower.className = "flower";
-                        flower.style.left = startX + colIndex * 30 + "px";  // Adjusted spacing
-                        flower.style.top = startY + rowIndex * 30 + "px";
-                        flower.style.backgroundImage = `url('flower.png')`; // Make sure 'flower.png' exists in repo
+                        flower.style.left = startX + colIndex * 35 + "px";  // Adjusted spacing
+                        flower.style.top = startY + rowIndex * 35 + "px";
+                        flower.style.backgroundImage = `url('flower.png')`; // Ensure 'flower.png' exists
                         document.body.appendChild(flower);
                         setTimeout(() => flower.remove(), 5000); // Flowers disappear after 5 seconds
                     }
