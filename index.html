@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flower Clicker - Is this Anj?</title>
+    <title>Flower Clicker - Anj, you are awesome</title>
     <style>
         body {
             margin: 0;
@@ -18,8 +18,8 @@
         }
         .flower {
             position: absolute;
-            width: 40px; /* Adjust size if needed */
-            height: 40px;
+            width: 50px; /* Increased for better visibility */
+            height: 50px;
             background-size: contain;
             background-repeat: no-repeat;
             animation: bloom 1s ease-out forwards;
@@ -33,28 +33,27 @@
 <body>
     <script>
         const textMap = [
-            "  *     **   *****   **   **",
-            " * *    * *   *   *  * * * *",
-            "*   *   **    *   *  *  *  *",
-            "*****   * *   *****  *     *",
-            "*   *   *  *  *   *  *     *",
-            "*   *   *   * *   *  *     *"
-        ]; // Letter pattern for "Is this Anj?"
+            "  *   *  *   *   ****  *     *  ***    ***  *     *  *****  ***   ****  *   * ",
+            "  *   *  **  *  *      *     *  *  *  *   *  *   *   *      *  *  *      *   * ",
+            "  *   *  * * *  *  **  *  *  *  ***   *****   * *    ****   ***   *  **  *   * ",
+            "   * *   *  **  *   *  * * * *  *  *  *   *    *     *      *  *  *   *   * *  ",
+            "    *    *   *   ****   *   *   *   * *   *    *     *****  *   *  ****     *  ",
+        ]; // "Anj, you are awesome" mapped to letters
 
         document.addEventListener("click", function(event) {
-            const startX = event.clientX - 120; // Adjust position
-            const startY = event.clientY - 60;
+            const startX = event.clientX - 200; // Centering the text
+            const startY = event.clientY - 50;
 
             textMap.forEach((row, rowIndex) => {
                 row.split("").forEach((char, colIndex) => {
                     if (char === "*") {
                         let flower = document.createElement("div");
                         flower.className = "flower";
-                        flower.style.left = startX + colIndex * 30 + "px";
+                        flower.style.left = startX + colIndex * 30 + "px";  // Adjusted spacing
                         flower.style.top = startY + rowIndex * 30 + "px";
-                        flower.style.backgroundImage = `url('flower.png')`; // Ensure the flower image is in the repo
+                        flower.style.backgroundImage = `url('flower.png')`; // Make sure 'flower.png' exists in repo
                         document.body.appendChild(flower);
-                        setTimeout(() => flower.remove(), 4000); // Flowers disappear after 4 seconds
+                        setTimeout(() => flower.remove(), 5000); // Flowers disappear after 5 seconds
                     }
                 });
             });
