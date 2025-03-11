@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flower Clicker - Anj, You Are Awesome</title>
+    <title>Flower Clicker</title>
     <style>
         body {
             margin: 0;
@@ -18,8 +18,8 @@
         }
         .flower {
             position: absolute;
-            width: 50px; /* Larger flowers */
-            height: 50px;
+            width: 500px;
+            height: 500px;
             background-size: contain;
             background-repeat: no-repeat;
             animation: bloom 1s ease-out forwards;
@@ -32,32 +32,14 @@
 </head>
 <body>
     <script>
-        // Correct letter grid mapping for "Anj, You Are Awesome"
-        const textPattern = [
-            "  *   *  *****   *     *   *****        *     *  *   *   *   *   *****   ***    ***   *****   *   *  ",
-            "  *   *  *       *     *   *            *     *  *   *   *   *   *       *  *  *   *  *       *  *   ",
-            "  *****  ***     *  *  *   ***          *  *  *  *   *   *   *   ***     ***   *   *  ***     **    ",
-            "  *   *  *       * * * *   *            * * * *  *   *    * *    *       *  *  *   *  *       *  *   ",
-            "  *   *  *****   *   *     *****        *   *   *****     *     *****   *   *  ***   *****   *   *  "
-        ]; // "Anj, You Are Awesome"
-
         document.addEventListener("click", function(event) {
-            const startX = event.clientX - 250; // Center horizontally
-            const startY = event.clientY - 80;  // Center vertically
-
-            textPattern.forEach((row, rowIndex) => {
-                row.split("").forEach((char, colIndex) => {
-                    if (char === "*") {
-                        let flower = document.createElement("div");
-                        flower.className = "flower";
-                        flower.style.left = startX + colIndex * 30 + "px";  // Adjust spacing
-                        flower.style.top = startY + rowIndex * 30 + "px";
-                        flower.style.backgroundImage = `url('flower.png')`; // Ensure flower.png is uploaded
-                        document.body.appendChild(flower);
-                        setTimeout(() => flower.remove(), 5000); // Flowers disappear after 5 seconds
-                    }
-                });
-            });
+            let flower = document.createElement("div");
+            flower.className = "flower";
+            flower.style.left = event.clientX - 25 + "px";
+            flower.style.top = event.clientY - 25 + "px";
+            flower.style.backgroundImage = `url('flower.png')`; // Uses uploaded image from GitHub
+            document.body.appendChild(flower);
+            setTimeout(() => flower.remove(), 3000);
         });
     </script>
 </body>
